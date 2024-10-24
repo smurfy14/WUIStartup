@@ -60,6 +60,7 @@ if ($rebootNeeded -or (Is-RebootPending)) {
 
 # Set WSL 2 as default version
 wsl --set-default-version 2
+wsl --update
 
 # Step 2: Install Ubuntu if not installed
 if (-not (Is-UbuntuInstalled)) {
@@ -165,7 +166,7 @@ wsl -d Ubuntu chmod 700 ~/.ssh
 $userProfile = $env:USERPROFILE
 
 # Path to your Bash script on Windows
-$bashScriptPathWindows = "$userProfile\scripts\ssh-alias-setup.sh"
+$bashScriptPathWindows = "$userProfile\scripts\WUIStartup\scripts\ssh-alias-setup.sh"
 
 # Check if the bash script file exists
 if (-not (Test-Path $bashScriptPathWindows)) {

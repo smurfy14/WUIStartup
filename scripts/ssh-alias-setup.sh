@@ -52,7 +52,7 @@ for server_alias in "${servers[@]}"; do
     sshpass -p "$password" ssh-copy-id -i /mnt/c/Users/$windows_username/.ssh/id_rsa.pub -o StrictHostKeyChecking=no $user_and_server
     
     # Create a PowerShell function for the alias
-    powershell_function="function $alias { ssh -o StrictHostKeyChecking=no $user_and_server }"
+    powershell_function="function $alias { ssh -t -o StrictHostKeyChecking=no $user_and_server 'export TERM=xterm; bash --login }"
     
     echo "Adding PowerShell alias for $alias"
     echo $powershell_function >> "$alias_file"
